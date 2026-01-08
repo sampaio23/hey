@@ -1,23 +1,23 @@
 prefix = /usr/local
 
-all: src/hey
+all: src/heyworld
 
-src/hey: src/hey.c
+src/hey: src/heyworld.c
 	@echo "CFLAGS=$(CFLAGS)" | \
 		fold -s -w 70 | \
 		sed -e 's/^/# /'
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDCFLAGS) -o $@ $^
 
-install: src/hey
-	install -D src/hey \
-		$(DESTDIR)$(prefix)/bin/hey
+install: src/heyworld
+	install -D src/heyworld \
+		$(DESTDIR)$(prefix)/bin/heyworld
 
 clean:
-	-rm -f src/hey
+	-rm -f src/heyworld
 
 distclean: clean
 
 uninstall:
-	-rm -f $(DESTDIR)$(prefix)/bin/hello
+	-rm -f $(DESTDIR)$(prefix)/bin/heyworld
 
 .PHONY: all install clean distclean uninstall
